@@ -1,12 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Движещ се елемент</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #222;
+            overflow: hidden;
+        }
+        #box {
+            width: 20px;
+            height: 20px;
+            background-color: lime;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+    </style>
 </head>
 <body>
-    <!--This is static HTML file, only kabel at this point -->
-    <!-- THE SNAKE WILL BE HERE -->
+    <div id="box"></div>
+    <script>
+        const box = document.getElementById("box");
+        let x = window.innerWidth / 2;
+        let y = window.innerHeight / 2;
+        const step = 20;
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "ArrowUp") y -= step;
+            if (event.key === "ArrowDown") y += step;
+            if (event.key === "ArrowLeft") x -= step;
+            if (event.key === "ArrowRight") x += step;
+            
+            box.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    </script>
 </body>
 </html>
